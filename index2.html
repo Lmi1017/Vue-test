@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test2</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- ref : 이 요소 참조할 거야! (사용자가 이름 설정) -->
+    <div ref="msg">{{ msg }}</div>
+    <div ref="div"></div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      // 요소 연결
+      el: '#app',
+      data: {
+        msg: 'Hello, Vue! 😋'
+      },
+
+      // ⚙️ life cycle
+      // beforeCreate : Vue 인스턴트가 생성되기 전에 실행되는 것
+      beforeCreate() {
+        // 인스턴스가 생성되기 전이기 때문에 this.msg가 뭔지 모름
+        console.log("beforeCreate!", this.msg)
+      },
+      // created : Vue 인스턴스 생성
+      created() {
+        console.log('created✨', this.msg)
+      },
+      // html과 연결되기 전 상태
+      beforeMount() {
+        // html 연결 전이기 때문에 참조 안에 있는 요소가 뭔지 모름
+        console.log("beforeMount!", this.$refs.div)
+      },
+      // mounted : html과 연결
+      mounted() {
+        console.log("mounted✨", this.$refs.div)
+      },
+      // 🛑 주의 : watch 같은 것들을 쓰면 문제가 발생할 수 있다. 조심해서 사용하자!
+      beforeUpdate() {
+        // update 전 상태의 값을 출력
+        console.log('beforeUpdate!', this.$refs.msg.innerText)
+      },
+      updated() {
+        // update 상태의 값을 출력
+        console.log('updated✨', this.$refs.msg.innerText)
+      },
+      beforeDestroy() {
+        console.log('beforeDestroy!')
+      },
+      destroyed() {
+        // vm.$destroy() ▶ 인스턴스 파괴로 반응성 없어짐
+        console.log('destroyed✨')
+      }
+    })
+  </script>
+</body>
+
+</html>
