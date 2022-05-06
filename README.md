@@ -12,4 +12,5 @@
 ### ⚙️ 학습 목차
 1. Vue 인스턴스 `(index.html)`
 2. Vue 라이프 사이클 `(index2.html)`
-2. Vue 템플릿 문법 `(index3.html)`
+3. Vue 템플릿 문법 `(index3.html)`
+4. Vue computed `(index4.html)`

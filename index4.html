@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test4</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="todos">
+      <div v-for="todo in computedTodos" :key="todo.id">
+        <input type="checkbox" v-model="todo.done">
+        <span>{{todo.title}}</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        todos: [{
+            title: '아침 먹기'
+          },
+          {
+            title: '점심 먹기'
+          },
+          {
+            title: '저녁 먹기'
+          },
+        ]
+      },
+      // ✨ computed는 안에서 return을 해주어야 사용할 수 있음
+      computed: {
+        // todos(원래 데이터)가 갱신되면 함수(computedTodos)도 갱신됨!
+        computedTodos() {
+          // map : 특정한 값들을 return하여 새로운 배열 생성
+          return this.todos.map((todo, index) => {
+            /**
+            return Object.assign({}, todo, {
+              id: index + 1,
+              done: false
+            })
+            **/
+            return {
+              ...todo,
+              id: index + 1,
+              done: false,
+            }
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
