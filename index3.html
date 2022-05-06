@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test3</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- style -->
+  <style>
+    .normal {
+      color: blue;
+    }
+
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-once : 한 번만 rendering (자주 사용되는 디렉티브는 아님) -->
+    <!-- <div v-once>{{msg}}</div> -->
+
+    <!-- v-html : 원시 html로 html 태그 사용 가능 (간혹 사용) -->
+    <div v-html="msg">{{msg}}</div>
+
+    <!-- {{보간법}} : 보간법 안에서 JS 사용가능 -->
+    <div>{{number*2}}</div>
+    <div>{{new Date()}}</div>
+    <div>{{Math.round(1.7)}}</div>
+
+    <!-- v-bind : 어떤 특정한 속성에서 사용하기 위해 필요한 디렉티브  -->
+    <!-- <div v-bind:class='className'>{{msg2}}</div> -->
+
+    <!-- v-bind 약어 -->
+    <!-- <div :class='className'>{{msg2}}</div> -->
+
+    <!-- v-on과 :(콜론) 약어 -->
+    <div :class='className' @click="changeClassName">{{msg2}}</div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        // 태그를 그냥 사용하면 문자로 출력됨 ▶ 원시 HTML 사용 (v-html)
+        msg: 'Hello! Vue!<br/>✨Good✨<br/>🪄원시 HTML v-html🪄',
+        msg2: '😸고양이😸',
+        number: 2,
+        className: 'normal'
+      },
+      methods: {
+        changeClassName() {
+          this.className = 'active'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
