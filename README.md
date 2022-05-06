@@ -14,3 +14,4 @@
 2. Vue 라이프 사이클 `(index2.html)`
 3. Vue 템플릿 문법 `(index3.html)`
 4. Vue computed `(index4.html)`
+5. Vue computed 캐싱 `(index5.html)`
