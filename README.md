@@ -16,3 +16,4 @@
 4. Vue computed `(index4.html)`
 5. Vue computed 캐싱 `(index5.html)`
 6. Vue computed : Getter, Setter `(index6.html)`
+7. Vue watch `(index7.html)`
