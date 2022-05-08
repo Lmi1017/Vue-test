@@ -20,3 +20,4 @@
 8. Vue 조건부 렌더링 v-if `(index8.html)`
 9. Vue 조건부 렌더링 v-show `(index9.html)`
 10. Vue 리스트 렌더링 배열(Array) `(index10.html)`
+11. Vue 리스트 렌더링 객체(Object) `(index11.html)`
