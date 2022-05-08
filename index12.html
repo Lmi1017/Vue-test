@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <button @click="pushTodo">Push</button>
+    <ul class="todos">
+      <!-- 배열(array) -->
+      <!-- v-for을 쓸 때 key가 꼭 필요! ▶ 중복 방지 -->
+      <li v-for="(todo, index) in todos" :key="index">{{todo.title}}</li>
+    </ul>
+
+    <button @click="addHomepage">Add Homepage property</button>
+    <ul class="lmi">
+      <!-- 객체(object) -->
+      <!-- 객체 데이터의 index는 3번! ▶ (value, key, index)  -->
+      <li v-for="(value, index, key) in lmi" :key="index">{{value}}</li>
+    </ul>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        todos: [{
+            title: '아침 먹기'
+          },
+          {
+            title: '점심 먹기'
+          },
+          {
+            title: '저녁 먹기'
+          },
+        ],
+
+        // 객체 데이터
+        lmi: {
+          name: 'LMI',
+          age: 25,
+        }
+      },
+      methods: {
+        pushTodo() {
+          /**
+          this.todos.push({
+            title: '야식 먹기'
+          })
+          **/
+
+          /**
+          Vue.set(this.todos, 3, {
+            title: '야식 먹기!!!!'
+          })
+          **/
+
+          this.$set(this.todos, 3, {
+            title: '야식 먹기!!!!'
+          })
+        },
+        addHomepage(){
+          // set을 사용하면 반응성이 있는 상태로 데이터 추가 가능!
+          this.$set(this.lmi, 'homepage', 'www.naver.com')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
