@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- :value 단방향 데이터 바인딩 ▶ 데이터를 넣어주기만 함 -->
+    <!-- <input type="text" :value="message"> -->
+
+    <!-- v-model 양방향 데이터 바인딩 -->
+    <!-- ✨단점 : 한글을 작성할 때 한 글자가 완성되어야 화면에 표시(약간 글자 밀림 현상처럼 보임) -->
+    <!-- <input type="text" v-model="message"> -->
+
+
+    <!-- input태그에서 일어나는 event 값을 message에 넣어줘! -->
+    <!-- <input type="text" @input="message=$event.target.value"> -->
+
+    <!-- methods를 이용하여 양방향 데이터 바인딩 -->
+    <input type="text" @input="bindMessage" :value="message">
+    <div>{{message}}</div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello'
+      },
+      methods: {
+        bindMessage(event) {
+          this.message = event.target.value
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
