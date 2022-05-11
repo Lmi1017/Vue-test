@@ -29,3 +29,4 @@
 17. Vue 폼 입력 바인딩 : v-model 수식어 `(index17.html)`
 18. Vue 컴포넌트 : 전역등록 & 지역등록 `(index18.html)`
 19. Vue 컴포넌트 : props `(index19.html)`
+20. Vue 사용자 지정 이벤트($emit) `(index20.html)`
