@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <my-comp>
+      <!-- 속성 이름 연결 -->
+      <template slot-scope="{mySlotData}">
+        {{mySlotData}}
+      </template>
+    </my-comp>
+  </div>
+
+  <script>
+    Vue.component('my-comp', {
+      // slot : 해당하는 컴포넌트에서 들어오는 content를 표현해줌
+      // content가 없으면 slot(대체 콘텐츠)이 보임
+      // template: '<div><slot>대체 콘텐츠</slot></div>',
+      
+
+      // slot이름을 지정하지 않으면 이름이 없는 slot에 들어감
+      // template: '<div><slot></slot><slot name="slot1"></slot></div>',
+
+
+      template: '<div><slot :my-slot-data="message"></slot></div>',
+      data(){
+        return{
+          message: 'Hello Slot~😸'
+        }
+      }
+    })
+
+    const vm = new Vue({
+      el: '#app',
+
+    })
+  </script>
+</body>
+
+</html>
