@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue test</title>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- html ▶ 케밥 케이스/ 대쉬 케이스 -->
+    <!-- js ▶ 카멜 케이스 -->
+    <my-comp :my-msg="message" />
+  </div>
+
+  <script>
+    Vue.component('my-comp', {
+      template: '<div>{{myMsg}}</div>',
+      props: {
+        // msg는 String(문자) 데이터만 받아라! ▶ 검사
+        // msg: String
+
+        myMsg: {
+          // 데이터 타입을 String, Number를 받을 수 있음
+          type: [String, Number],
+
+          // 데이터가 넘어오지 않은 경우 기본값 설정
+          // default: 'Default!',
+
+          // 필수 데이터 설정
+          required: true,
+
+          // 유효성 검사 ▶ 함수로 작성
+          validator: function(value) {
+            return value === 'Hello'
+          }
+        }
+      }
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      // data는 함수로 생성 ▶ 객체의 참조 속성 주의! (즉, mutable)
+      data() {
+        return {
+          message: 'Hello'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
